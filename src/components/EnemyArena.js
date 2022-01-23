@@ -66,10 +66,18 @@ const [getPlayerEnergy, setPlayerEnergy] = useState(character.energy)
 
 
     function attackMonster(){
-        console.log(weapon)
+
         if(Object.keys(weapon).length === 0){
 
-            setMonsterHp(getMonsterHp - playerDamage)
+            let critChance = character.strength
+
+            if (Math.round(Math.random()*100) <= critChance){
+                setMonsterHp(getMonsterHp - (playerDamage*3))
+                console.log("CRIT")
+            } else {
+                setMonsterHp(getMonsterHp - playerDamage)
+            }
+
 
             setPlayerHp(getPlayerHp - monsterDamage)
 
@@ -86,10 +94,20 @@ const [getPlayerEnergy, setPlayerEnergy] = useState(character.energy)
             let weaponDmg =  playerDamage + Math.round(Math.random()*weapon.maxDamage)
             if( getPlayerEnergy >= weapon.energyPerHit ){
 
-            setMonsterHp(getMonsterHp - weaponDmg)
+                let critChance = character.strength
+
+                if (Math.round(Math.random()*100) <= critChance){
+                    console.log("CRIT")
+                    setMonsterHp(getMonsterHp - (weaponDmg*3))
+                    console.log(getMonsterHp)
+                } else {
+                    setMonsterHp(getMonsterHp - playerDamage)
+                }
+
+            // setMonsterHp(getMonsterHp - weaponDmg)
             setPlayerHp(getPlayerHp - monsterDamage)
 
-            setPlayerEnergy(getPlayerEnergy - weapon.energyPerHit )
+            setPlayerEnergy(getPlayerEnergy - weapon.energyPerHit + character.stamina)
             console.log(weaponDmg)
             let playerPercentDamage = weaponDmg /  getMonster.health * 100
             setPlayerHpPercent( getPlayerHpPercent - playerPercentDamage)
