@@ -1,0 +1,112 @@
+.d-flex {
+    display:flex;
+}
+.f-wrap {
+    flex-wrap: wrap;
+}
+.align-c {
+    text-align: center;
+}
+.sp-ar {
+    justify-content: space-around;
+}
+.w-50 {
+    width:50%;
+}
+.mainCard {
+
+}
+.mainCard img {
+    width:200px;
+}
+.mainCard p {
+    margin-top:-10px;
+}
+
+.playerHP {
+    width:100%;
+    height:30px;
+    background-color: green;
+
+    color:white;
+    font-weight: bold;
+}
+.enemyHP {
+    width:100%;
+    height:30px;
+    background-color: red;
+    font-weight: bold;
+}
+.toolbar {
+    background-color: black;
+ color:white;
+
+}
+.toolbar a{
+    color:white;
+    text-decoration: none;
+    margin:10px;
+}
+.toolbarTrader {
+    background-color: black;
+    color:white;
+    text-decoration: none;
+
+}
+.toolbarTrader{
+    background-color: black;
+    color:white;
+    text-decoration: none;
+    padding-right:10px;
+    padding-left:10px;
+}
+.potions {
+ background-color: #bbbbbb;
+    border-radius: 5px;
+    margin:5px;
+    text-align: center;
+    padding:5px;
+}
+.weapons {
+    background-color: #bbbbbb;
+    border-radius: 5px;
+    margin:5px;
+    text-align: center;
+    padding:5px;
+}
+.inventory {
+    margin:5px;
+    text-align: center;
+    padding:5px;
+}
+.inventorySlot {
+    margin-right:10px;
+}
+.eqWeapon img{
+width:100px;
+}
+.column1 {
+    width:33%;
+}
+.column2 {
+    width:66%
+}
+.column3 {
+    width:50%;
+}
+.align-l {
+    text-align: left;
+}
+.arenaButtons {
+    margin-top:30px;
+}
+.monsterDrops {
+    background-color: #bbbbbb;
+    padding: 10px;
+    border-radius: 10px;
+    margin:10px;
+ width:50%;
+}
+.monsterDropsCard {
+    margin:10px;
+}
