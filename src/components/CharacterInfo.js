@@ -13,6 +13,9 @@ const CharacterInfo = () => {
     const dispatch = useDispatch()
     console.log()
 
+
+
+
     function loseWeapon(){
         if(inventory.length < inventorySlots){
         console.log(weapon)

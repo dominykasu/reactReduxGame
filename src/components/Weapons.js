@@ -27,6 +27,7 @@ const Weapons = () => {
 }
 
 
+
     return (
 
         <div className="d-flex f-wrap" >

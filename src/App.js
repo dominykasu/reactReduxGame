@@ -1530,8 +1530,10 @@ function App() {
     }
   ]
 
+
+
   return (
-      <context.Provider value={{trader, monsters, dropItems}}>
+      <context.Provider value={{trader, monsters, dropItems, effects}}>
       <BrowserRouter>
         <div className="App">
           <Routes>

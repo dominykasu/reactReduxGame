@@ -8,7 +8,9 @@ import {removeInventory} from "../features/inventory";
 
 import {useLocation} from "react-router-dom";
 import {updateCharacterGold} from "../features/character";
-
+import context from "../context/context";
+import {useContext} from "react";
+import {updateCharacter} from "../features/character";
 
 const Inventory = ({yourHp}) => {
 
@@ -16,25 +18,50 @@ const Inventory = ({yourHp}) => {
     let inventory = useSelector((state)=> state.inventory.value)
     const character = useSelector((state)=> state.character.value)
     const gold = useSelector((state)=> state.character.value.gold)
-
+    const {effects} = useContext(context)
 
     const dispatch = useDispatch()
     let location = useLocation()
 
 
 
-    function equipWeapon(myWeapon, index) {
-        console.log(weapon)
-        if (location.pathname === "/main" && myWeapon.hasOwnProperty("maxDamage") && Object.keys(weapon).length === 0) {
-            dispatch(updateWeapon(myWeapon))
 
+
+    function equipWeapon(myWeapon, index) {
+
+        if (location.pathname === "/main" && myWeapon.hasOwnProperty("maxDamage") && Object.keys(weapon).length === 0) {
+
+
+            dispatch(updateWeapon(myWeapon))
             dispatch(removeInventory(index))
+
+            function getEffect(whatEffect) {
+                const statName = Object.keys(effects[whatEffect].effect)[0]
+
+                const statValue = effects[whatEffect].effect[statName]
+
+
+
+
+
+
+                dispatch(updateCharacter({...character, [statName] : statValue + character[statName]}))
+
+            }
+
+            if (myWeapon.effects.length > 0) {
+                myWeapon.effects.map(x => getEffect(x))
+
+            }
+
+
+
+
+
+
         }
-        // else {
-        //     console.log("selling items from inv to shop")
-        //     console.log("or item doesnt equipt to char because its a potion")
-        //     console.log("or weapon already exists")
-        // }
+
+
         if (location.pathname === "/arena" && myWeapon.hasOwnProperty("effect")) {
 
             dispatch(removeInventory(index))
@@ -64,7 +91,7 @@ const Inventory = ({yourHp}) => {
         }
     }
 
-    console.log()
+
     return (
         <div>
 <h1>Inventory:</h1>
